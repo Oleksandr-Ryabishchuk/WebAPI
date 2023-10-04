@@ -45,8 +45,8 @@ namespace WebAPI.Controllers
             var tree = context.Trees.Include(a => a.Children).FirstOrDefault(a => a.Name == treeName);
             if(tree == null)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError);
                 throw new ControllerException($"Tree with name={treeName} has not been found", ev.Id);
+                return StatusCode(StatusCodes.Status500InternalServerError);                
             }
             return Ok(mapper.Map<TreeDto>(tree));
         }

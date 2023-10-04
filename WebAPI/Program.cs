@@ -10,12 +10,15 @@ using WebAPI.Extensions;
 using WebAPI.Exceptions;
 using WebAPI.Services;
 using WebAPI.Services.Interfaces;
+using System.Security.Principal;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(typeof(Program));
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
@@ -26,6 +29,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<INodeService, NodeService>();
+
+builder.Services
+    .AddIdentityCore<User>()   
+    .AddEntityFrameworkStores<ApplicationDbContext>();
+    
 
 var app = builder.Build();
 
