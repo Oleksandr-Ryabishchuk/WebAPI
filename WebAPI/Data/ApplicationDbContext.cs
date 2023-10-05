@@ -17,4 +17,16 @@ public class ApplicationDbContext : DbContext
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
     {
     }
+
+    protected override void OnModelCreating(ModelBuilder builder)
+    {
+        base.OnModelCreating(builder);
+
+        builder.Entity<Tree>(b =>
+        {
+            b.HasMany(e => e.Children)
+                    .WithOne(e => e.Tree)
+                    .HasForeignKey(ur => ur.TreeId);
+        });
+    }
 }

@@ -20,7 +20,7 @@ namespace WebAPI.Middlewares
             }
             catch (SecureException ex)
             {
-                context.Journals.Add(new Journal()
+                await context.Journals.AddAsync(new Journal()
                 {
                     Type = "Secure",
                     CreatedAt = DateTime.UtcNow,
@@ -30,7 +30,7 @@ namespace WebAPI.Middlewares
             }
             catch (ControllerException ex)
             {
-                context.Journals.Add(new Journal()
+                await context.Journals.AddAsync(new Journal()
                 {
                     Type = "Exception",
                     CreatedAt = DateTime.UtcNow,
@@ -40,12 +40,16 @@ namespace WebAPI.Middlewares
             }
             catch (Exception ex)
             {
-                context.Journals.Add(new Journal()
+                await context.Journals.AddAsync(new Journal()
                 {                    
                     Type = "Exception",
                     CreatedAt = DateTime.UtcNow,
                     Message = ex.Message                    
                 });
+            }
+            finally
+            {
+                await context.SaveChangesAsync();
             }
         }
     }

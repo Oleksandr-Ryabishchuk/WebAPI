@@ -18,6 +18,11 @@ namespace WebAPI.Services
             {                
                 return new ValidityResponse(false, $"Tree with Name={tree.Name} has been built in wrong way");
             }
+            var supposedParent = tree.Children.FirstOrDefault(a => a.Id == dto.ParentId);
+            if (supposedParent == null)
+            {
+                return new ValidityResponse(false, $"Node with Id={dto.ParentId} does not exist");
+            }
             var child = tree.Children.FirstOrDefault(b => b.ParentId == parent.Id);
             if (child != null)
             {

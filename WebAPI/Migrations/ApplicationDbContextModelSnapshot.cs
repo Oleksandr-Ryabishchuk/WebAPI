@@ -43,7 +43,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Events");
+                    b.ToTable("Events", (string)null);
                 });
 
             modelBuilder.Entity("WebAPI.Entities.Journal", b =>
@@ -72,7 +72,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("EventId");
 
-                    b.ToTable("Journals");
+                    b.ToTable("Journals", (string)null);
                 });
 
             modelBuilder.Entity("WebAPI.Entities.Node", b =>
@@ -97,7 +97,7 @@ namespace WebAPI.Migrations
 
                     b.HasIndex("TreeId");
 
-                    b.ToTable("Nodes");
+                    b.ToTable("Nodes", (string)null);
                 });
 
             modelBuilder.Entity("WebAPI.Entities.Tree", b =>
@@ -114,7 +114,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trees");
+                    b.ToTable("Trees", (string)null);
                 });
 
             modelBuilder.Entity("WebAPI.Entities.User", b =>
@@ -167,7 +167,7 @@ namespace WebAPI.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("WebAPI.Entities.Journal", b =>

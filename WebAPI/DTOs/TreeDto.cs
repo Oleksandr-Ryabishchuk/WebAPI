@@ -6,6 +6,6 @@ namespace WebAPI.DTOs
     {
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
-        public IEnumerable<NodeDto>? Children { get; set; }
+        public IEnumerable<NodeCreateDto>? Children { get; set; }
     }
 }
