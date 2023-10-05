@@ -70,5 +70,25 @@ namespace WebTests
             Assert.IsFalse(result.Valid);
             Assert.AreEqual("Node with Id=1 already has a child", result.Reason);
         }
+
+        [TestMethod]
+        public void CheckIfValid_NodeWithNameAlreadyExists_ReturnsInvalidResponse()
+        {
+            // Arrange
+            var tree = new Tree { Id = 1, Name = "Tree" };
+            var existingNode = new Node { Id = 1, ParentId = null, TreeId = 1, Tree = tree, Name = "DuplicateNodeName" };
+            tree.Children.Add(existingNode);
+
+            var dto = new NodeCreateDto { Name = "DuplicateNodeName", ParentId = 1, TreeName = "Tree"}; // Node with the same name already exists.
+
+            var nodeService = new NodeService();
+
+            // Act
+            var result = nodeService.CheckIfValid(tree, dto);
+
+            // Assert
+            Assert.IsFalse(result.Valid);
+            Assert.AreEqual($"Node with Name={dto.Name} already exists in current tree", result.Reason);
+        }
     }
 }
