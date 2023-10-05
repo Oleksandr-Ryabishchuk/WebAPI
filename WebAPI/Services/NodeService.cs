@@ -1,6 +1,5 @@
 ﻿using WebAPI.DTOs;
 using WebAPI.Entities;
-using WebAPI.Exceptions;
 using WebAPI.Services.Interfaces;
 
 namespace WebAPI.Services

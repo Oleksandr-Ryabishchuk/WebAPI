@@ -1,17 +1,12 @@
 using WebAPI.Data;
-using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Middlewares;
-using AutoMapper.Features;
 using Microsoft.AspNetCore.Identity;
 using WebAPI.Entities;
 using WebAPI.Configs;
 using WebAPI.Extensions;
-using WebAPI.Exceptions;
 using WebAPI.Services;
 using WebAPI.Services.Interfaces;
-using System.Security.Principal;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 

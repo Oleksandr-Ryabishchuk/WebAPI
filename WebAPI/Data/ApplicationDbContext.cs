@@ -1,10 +1,6 @@
 ﻿namespace WebAPI.Data;
 
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using System.Linq.Expressions;
-
 using WebAPI.Entities;
 
 public class ApplicationDbContext : DbContext
